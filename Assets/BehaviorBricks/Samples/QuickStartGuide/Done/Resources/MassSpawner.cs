@@ -9,6 +9,7 @@ public class MassSpawner : MonoBehaviour
 {
     ///<value>The gameobject that will be respawned</value>
     public GameObject prefab;
+    public GameObject player;
     ///<value>Area where the Gameobjects will move</value>
     public GameObject wanderArea;
 
@@ -17,6 +18,8 @@ public class MassSpawner : MonoBehaviour
     int spawnCount = 0;
     List<GameObject> entities;
 
+    public float spawnInterval;
+
     /// <summary>
     /// Initialize the entities to pass them to the behaviors
     /// </summary>
@@ -24,7 +27,7 @@ public class MassSpawner : MonoBehaviour
     {
         entities = new List<GameObject>(FindObjectsOfType(typeof(GameObject)) as GameObject[]);
         entities.RemoveAll(e => e.GetComponent<BehaviorExecutor>() == null);
-        InvokeRepeating("Spawn", 0f, 1.0f / 1000.0f);
+        InvokeRepeating("Spawn", 0f, spawnInterval);
     }
 
     /// <summary>
@@ -37,7 +40,7 @@ public class MassSpawner : MonoBehaviour
             GameObject instance = Instantiate(prefab, GetRandomPosition(), Quaternion.identity) as GameObject;
             BehaviorExecutor component = instance.GetComponent<BehaviorExecutor>();
             component.SetBehaviorParam("wanderArea", wanderArea);
-            component.SetBehaviorParam("player", entities[Random.Range(0, entities.Count)]);
+            component.SetBehaviorParam("player", player);
 
             ++spawnCount;
 
