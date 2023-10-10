@@ -25,23 +25,23 @@ namespace BBUnity.Actions
 
         /// <summary>Initialization Method of ClosestGameObjectWithTag.</summary>
         /// <remarks>Get all the GamesObject with that tag and check which is the closest one.</remarks>
-        public override void OnStart()
-        {
-            float dist = float.MaxValue;
-            foreach(GameObject go in GameObject.FindGameObjectsWithTag(tag))
-            {
-                float newdist = (go.transform.position + gameObject.transform.position).sqrMagnitude;
-                if(newdist < dist)
-                {
-                    dist = newdist;
-                    foundGameObject = go;
-                }
-            }
-        }
+        /// 
         /// <summary>Method of Update of ClosestGameObjectWithTag.</summary>
         /// <remarks>Complete the task.</remarks>
         public override TaskStatus OnUpdate()
         {
+            float dist = float.MaxValue;
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag(tag))
+            {
+                float newdist = (go.transform.position + gameObject.transform.position).sqrMagnitude;
+                if (newdist < dist)
+                {
+                    dist = newdist;
+                    foundGameObject = go;
+                    Debug.Log(gameObject.name + " >> " + foundGameObject.name);
+                }
+            }
+
             return TaskStatus.COMPLETED;
         }
     }
