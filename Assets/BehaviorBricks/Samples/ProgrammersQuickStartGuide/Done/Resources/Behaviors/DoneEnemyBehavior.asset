@@ -115,7 +115,7 @@ MonoBehaviour:
     <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"8\" />\r\n         
     <PrioritySelectorNode id=\"2\" />\r\n        </data>\r\n      </_data>\r\n   
     </ConditionEvalNode>\r\n    <ActionNode id=\"7\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"376.375 418.5\" name=\"Samples/ProgQuickStartGuide/Shoot\"
+    <data breakpoint=\"0\" selected=\"True\" position=\"376.375 418.5\" name=\"Samples/ProgQuickStartGuide/Shoot\"
     description=\"Periodically clones a 'bullet' and shoots it throught the Forward
     axis with the specified velocity. This action never ends.\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode

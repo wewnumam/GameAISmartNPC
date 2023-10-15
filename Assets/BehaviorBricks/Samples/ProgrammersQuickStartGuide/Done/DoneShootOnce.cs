@@ -76,6 +76,7 @@ namespace BBSamples.PQSG // Programmers Quick Start Guide
 
             newBullet.GetComponent<Rigidbody>().velocity = velocity * shootPoint.forward;
             // The action is completed. We must inform the execution engine.
+            GameObject.Destroy(newBullet, 3f);
             return TaskStatus.COMPLETED;
         } // OnUpdate
 
