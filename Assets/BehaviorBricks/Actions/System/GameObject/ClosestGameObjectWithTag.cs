@@ -38,7 +38,6 @@ namespace BBUnity.Actions
                 {
                     dist = newdist;
                     foundGameObject = go;
-                    Debug.Log(gameObject.name + " >> " + foundGameObject.name);
                 }
             }
 

@@ -39,11 +39,17 @@ public class MassSpawner : MonoBehaviour
         if (spawnCount <= Spawns)
         {
             GameObject instance = Instantiate(prefab, GetRandomPosition(), Quaternion.identity) as GameObject;
-            instance.name = instance.name + instance.GetInstanceID().ToString();
-            BehaviorExecutor component = instance.GetComponent<BehaviorExecutor>();
-            component.SetBehaviorParam("player", player);
-            component.SetBehaviorParam("wanderArea", wanderArea);
-            component.SetBehaviorParam("enemyHQ", enemyHQ);
+            instance.name = $"{prefab.name}_{spawnCount}";
+
+            BehaviorExecutor component;
+
+            if (instance.TryGetComponent<BehaviorExecutor>(out component))
+            {
+                component.SetBehaviorParam("player", player);
+                component.SetBehaviorParam("wanderArea", wanderArea);
+                component.SetBehaviorParam("enemyHQ", enemyHQ);
+            }
+            
 
             ++spawnCount;
 
