@@ -39,9 +39,6 @@ public class Hostage : MonoBehaviour
     {
         fsm = new StateMachine<States, Driver>(this);
         fsm.ChangeState(States.Init);
-
-        animator.SetFloat("MotionSpeed", 1);
-        lineRenderer.positionCount = 0;
     }
 
     private void Update()
@@ -57,7 +54,6 @@ public class Hostage : MonoBehaviour
         {
             fsm.ChangeState(States.FollowTarget);
             target = collider.transform;
-
         }
 
         if (collider.CompareTag("HQ"))
